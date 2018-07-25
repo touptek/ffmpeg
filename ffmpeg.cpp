@@ -1,41 +1,11 @@
-#include "global.h"
 #include "ffmpeg.h"
 
-#define MY_IMPL_FUN0(r, f)	\
-r my_##f()	\
-{	\
-	return f();	\
-}
-
-#define MY_IMPL_FUN1(r, f, at)	\
-r my_##f(at av)	\
-{	\
-	return f(av);	\
-}
-
-#define MY_IMPL_FUN2(r, f, at0, at1)	\
-r my_##f(at0 av0, at1 av1)	\
-{	\
-	return f(av0, av1);	\
-}
-
-#define MY_IMPL_FUN3(r, f, at0, at1, at2)	\
-r my_##f(at0 av0, at1 av1, at2 av2)	\
-{	\
-	return f(av0, av1, av2);	\
-}
-
-#define MY_IMPL_FUN4(r, f, at0, at1, at2, at3)	\
-r my_##f(at0 av0, at1 av1, at2 av2, at3 av3)	\
-{	\
-	return f(av0, av1, av2, av3);	\
-}
-
-#define MY_IMPL_FUN5(r, f, at0, at1, at2, at3, at4)	\
-r my_##f(at0 av0, at1 av1, at2 av2, at3 av3, at4 av4)	\
-{	\
-	return f(av0, av1, av2, av3, av4);	\
-}
+#define MY_IMPL_FUN0(r, f)							r my_##f() { return f(); }
+#define MY_IMPL_FUN1(r, f, at)						r my_##f(at av)	{ return f(av);	}
+#define MY_IMPL_FUN2(r, f, at0, at1)				r my_##f(at0 av0, at1 av1) { return f(av0, av1); }
+#define MY_IMPL_FUN3(r, f, at0, at1, at2)			r my_##f(at0 av0, at1 av1, at2 av2)	{ return f(av0, av1, av2); }
+#define MY_IMPL_FUN4(r, f, at0, at1, at2, at3)		r my_##f(at0 av0, at1 av1, at2 av2, at3 av3) { return f(av0, av1, av2, av3); }
+#define MY_IMPL_FUN5(r, f, at0, at1, at2, at3, at4)	r my_##f(at0 av0, at1 av1, at2 av2, at3 av3, at4 av4) { return f(av0, av1, av2, av3, av4); }
 
 MY_IMPL_FUN4(int, av_dict_set, AVDictionary**, const char*, const char*, int);
 MY_IMPL_FUN1(void, av_dict_free, AVDictionary**);
